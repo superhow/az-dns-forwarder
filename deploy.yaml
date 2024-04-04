@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: az-dns-forwarder
   name: az-dns-forwarder
@@ -17,12 +16,11 @@ spec:
         maxUnavailable: 25%
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: az-dns-forwarder
     spec:
       containers:
-        - image: ghcr.io/whiteducksoftware/az-dns-forwarder/az-dns-forwarder:latest
+        - image: axiology.azurecr.io/az-dns-forwarder:v1
           name: bind
           ports:
           - containerPort: 53
@@ -33,7 +31,6 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: az-dns-forwarder
   name: az-dns-forwarder
